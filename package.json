@@ -1,7 +1,7 @@
 {
   "name": "crudsinfotech-nodeapp",
   "version": "1.0.0",
-  "description": "Hello Airbus",
+  "description": "Hello India",
   "main": "main.js",
   "scripts": {
     "test": "node test.js",
