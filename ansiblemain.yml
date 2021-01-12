@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  become: true
+
+  vars:
+    jenkins_url: jenkins.kappa
+  tasks:
+   - name: Install OpenJDK
+     yum: name=java-1.8.0-openjdk state=installed update_cache=yes
+
+   - name: Add Jenkins repo
+     get_url: url=http://pkg.jenkins-ci.org/redhat/jenkins.repo dest=/etc/yum.repos.d/jenkins.repo                                                                             pos.d/jenkins.repo
+
+   - name: Import Jenkins Key
+     rpm_key: key=https://pkg.jenkins.io/redhat-stable/jenkins.io.key state=present                                                                             ent
+
+   - name: Install Jenkins
+     yum: name=jenkins state=installed update_cache=yes
+
+   - name: Start Jenkins
+     systemd: name=jenkins state=started enabled=yes
